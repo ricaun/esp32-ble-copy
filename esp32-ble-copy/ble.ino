@@ -72,17 +72,14 @@ static BLEUUID serviceUUID((uint16_t)0xfef3);
 
 BLEAdvertising *pAdvertising;
 
-byte data[] = {0xDA, 0x4E, 0xF5, 0x1C, 0x16, 0x52, 0x90, 0xA1};
-int size = 8;
-
 void ble_loop_send()
 {
   ble_change();
   pAdvertising->start();
   Serial.println("Advertizing started...");
-  delay(100);
+  delay(500);
   pAdvertising->stop();
-  delay(100);
+  delay(500);
 }
 
 void ble_change()
@@ -95,11 +92,9 @@ void ble_change()
 
   std::string strServiceData = "";
 
-  for (int i = 0; i < size; i++) {
-    strServiceData += data[i];
-  }
-
   strServiceData = mac_get_next();
+
+  //Serial.println(strServiceData.c_str());
 
   advertisementData.setServiceData(serviceUUID, strServiceData);
 

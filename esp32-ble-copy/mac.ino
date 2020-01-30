@@ -2,7 +2,7 @@
    mac.ino
 */
 
-#define MACMAX 2000
+#define MACMAX 50
 
 uint64_t macs[MACMAX];
 int16_t rssis[MACMAX];
